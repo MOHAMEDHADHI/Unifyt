@@ -167,6 +167,140 @@ python cubic_meter_to_meter.py --table
 
 ---
 
+### 8. **Wire Gauge Converter** (`wire_gauge_converter.py`) ⭐ NEW v0.2.1
+Convert between wire gauge standards (AWG, SWG, BWG) and physical diameters.
+
+**Features:**
+- AWG (American Wire Gauge) - 0000 to 44
+- SWG (Standard Wire Gauge) - 0 to 50
+- BWG (Birmingham Wire Gauge) - 0 to 36
+- Bidirectional conversions (gauge ↔ diameter)
+- Interactive mode with comparison tables
+- Practical applications (electrical, jewelry, industrial)
+
+**Usage:**
+```bash
+# Interactive mode
+python wire_gauge_converter.py --interactive
+
+# Run all demonstrations
+python wire_gauge_converter.py
+```
+
+**Key Units:** AWG, SWG, BWG, millimeter, inch
+
+---
+
+### 9. **Torque Converter** (`torque_converter.py`) ⭐ NEW v0.2.1
+Convert between torque units for automotive, industrial, and mechanical applications.
+
+**Features:**
+- Newton-meter (Nm) - SI standard
+- Foot-pound (ft-lb) - Imperial standard
+- Inch-pound (in-lb) - Small fasteners
+- Kilonewton-meter (kNm) - Large applications
+- Automotive specifications (engine, wheel, fastener torques)
+- Interactive mode with practical examples
+
+**Usage:**
+```bash
+# Interactive mode
+python torque_converter.py --interactive
+
+# Run all demonstrations
+python torque_converter.py
+```
+
+**Key Units:** newton_meter, foot_pound, inch_pound, kilonewton_meter
+
+---
+
+### 10. **Flow Rate Converter** (`flow_rate_converter.py`) ⭐ NEW v0.2.1
+Convert between mass and volumetric flow rates for HVAC, pumps, and industrial processes.
+
+**Features:**
+- Mass flow: kg/s, kg/min, kg/hr, tph, lb/s, lb/min, lb/hr
+- Volumetric flow: m³/s, m³/min, m³/hr, L/s, lpm, L/hr, cfm, cfs, gpm
+- HVAC applications (air handlers, chillers, cooling towers)
+- Pump specifications
+- Industrial process flows
+- Interactive mode
+
+**Usage:**
+```bash
+# Interactive mode
+python flow_rate_converter.py --interactive
+
+# Run all demonstrations
+python flow_rate_converter.py
+```
+
+**Key Units:** kilogram_per_hour, liter_per_minute, cubic_meter_per_hour, cfm
+
+---
+
+### 11. **Angular Velocity Converter** (`angular_velocity_converter.py`) ⭐ NEW v0.2.1
+Convert between rotational speed units for motors, machinery, and rotational mechanics.
+
+**Features:**
+- RPM (revolutions per minute) - Common motor speed
+- RPS (revolutions per second)
+- rad/s (radians per second) - SI standard
+- deg/s (degrees per second)
+- Motor specifications and applications
+- Rotational mechanics calculations (linear velocity, centripetal acceleration)
+- Power calculations from torque and speed
+- RPM vs revolution_per_minute clarification
+
+**Usage:**
+```bash
+# Interactive mode
+python angular_velocity_converter.py --interactive
+
+# Run all demonstrations
+python angular_velocity_converter.py
+```
+
+**Key Units:** revolution_per_minute, radian_per_second, degree_per_second
+
+**Important Note:** Unifyt has two RPM units:
+- `'rpm'` - Frequency (Hz) for cycles per minute
+- `'revolution_per_minute'` - Angular velocity (rad/s) for rotational speed
+
+---
+
+### 12. **Paper Weight (GSM) Converter** (`paper_weight_converter.py`) ⭐ NEW v0.2.1
+Convert paper and fabric weights using GSM (grams per square meter).
+
+**Features:**
+- GSM to kg/m², lb/ft², oz/yd²
+- Common paper types (copy paper, cardstock, newsprint)
+- Fabric weights (cotton, denim, canvas)
+- Printing industry specifications
+- Paper ream weight calculations
+- Cost and environmental impact analysis
+- Interactive mode
+
+**Usage:**
+```bash
+# Interactive mode
+python paper_weight_converter.py --interactive
+
+# Run all demonstrations
+python paper_weight_converter.py
+```
+
+**Key Units:** gsm (grams per square meter), kilogram_per_meter^2
+
+**Applications:**
+- Printing and publishing
+- Textile industry
+- Packaging design
+- Office supplies
+- Environmental impact assessment
+
+---
+
 ## How to Use These Examples
 
 ### Running Individual Files

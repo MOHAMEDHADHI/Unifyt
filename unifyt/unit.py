@@ -47,6 +47,14 @@ class Unit:
         'bit': Dimension(),  # dimensionless (information)
         'knot': Dimension(length=1, time=-1),  # m/s
         'mach': Dimension(length=1, time=-1),  # m/s
+        # Torque (dimensionally same as energy: force × distance)
+        'newton_meter': Dimension(mass=1, length=2, time=-2),  # kg⋅m²/s² (same as joule)
+        # Mass flow rate
+        'kilogram_per_second': Dimension(mass=1, time=-1),  # kg/s
+        # Volumetric flow rate
+        'cubic_meter_per_second': Dimension(length=3, time=-1),  # m³/s
+        # Angular velocity
+        'radian_per_second': Dimension(time=-1),  # rad/s (dimensionless/time)
     }
     
     # Conversion factors to base units
@@ -395,16 +403,72 @@ class Unit:
         'gram_per_cubic_centimeter': 1000.0, 'g_cm3': 1000.0,
         'gram_per_liter': 1.0, 'g_L': 1.0,
         
-        # Flow Rate
+        # Flow Rate (Volumetric)
         'cubic_meter_per_second': 1.0, 'm3_s': 1.0,
         'liter_per_second': 0.001, 'L_s': 0.001,
-        'liter_per_minute': 1.66667e-5, 'L_min': 1.66667e-5,
+        'liter_per_minute': 1/60000.0, 'L_min': 1/60000.0, 'lpm': 1/60000.0,
+        'liter_per_hour': 1/3600000.0, 'L_hr': 1/3600000.0, 'L_h': 1/3600000.0, 'lph': 1/3600000.0,
         'gallon_per_minute': 6.30902e-5, 'gpm': 6.30902e-5,
         
         # Fuel Efficiency
         'mile_per_gallon': 425144.0, 'mpg': 425144.0,  # Inverse meters
         'kilometer_per_liter': 1000.0, 'km_L': 1000.0,
         'liter_per_100km': 0.01, 'L_100km': 0.01,
+        
+        # Paper/Fabric Weight (mass per area)
+        'gsm': 0.001,  # grams per square meter (kg/m²)
+        'grams_per_square_meter': 0.001,
+        
+        # Torque (force × distance) - shortcuts for compound units
+        # Note: These are dimensionally equivalent to energy but contextually different
+        'newton_meter': 1.0, 'Nm': 1.0, 'N_m': 1.0,  # SI torque unit
+        'kilonewton_meter': 1000.0, 'kNm': 1000.0,
+        'inch_pound': 0.112984829, 'in_lb': 0.112984829, 'inch_lb': 0.112984829,
+        'foot_pound': 1.35581795, 'ft_lb': 1.35581795, 'foot_lb': 1.35581795,
+        'pound_foot': 1.35581795, 'lb_ft': 1.35581795,
+        
+        # Specific Energy (energy per mass)
+        'joule_per_kilogram': 1.0, 'J_kg': 1.0,
+        'kilojoule_per_kilogram': 1000.0, 'kJ_kg': 1000.0,
+        'megajoule_per_kilogram': 1e6, 'MJ_kg': 1e6,
+        'calorie_per_gram': 4184.0, 'cal_g': 4184.0,
+        
+        # Specific Volume (volume per mass)
+        'cubic_meter_per_kilogram': 1.0, 'm3_kg': 1.0,
+        'liter_per_kilogram': 0.001, 'L_kg': 0.001,
+        
+        # Mass Flow Rate
+        'kilogram_per_second': 1.0, 'kg_s': 1.0,
+        'kilogram_per_minute': 1/60.0, 'kg_min': 1/60.0,
+        'kilogram_per_hour': 1/3600.0, 'kg_hr': 1/3600.0, 'kg_h': 1/3600.0,
+        'ton_per_hour': 1000/3600.0, 'tph': 1000/3600.0, 't_h': 1000/3600.0,
+        'pound_per_second': 0.453592, 'lb_s': 0.453592,
+        'pound_per_minute': 0.453592/60.0, 'lb_min': 0.453592/60.0,
+        'pound_per_hour': 0.453592/3600.0, 'lb_hr': 0.453592/3600.0,
+        
+        # Volumetric Flow Rate (additional)
+        'cubic_meter_per_minute': 1/60.0, 'm3_min': 1/60.0,
+        'cubic_meter_per_hour': 1/3600.0, 'm3_hr': 1/3600.0, 'm3_h': 1/3600.0,
+        'cubic_foot_per_minute': 0.000471947, 'cfm': 0.000471947, 'ft3_min': 0.000471947,
+        'cubic_foot_per_second': 0.0283168, 'cfs': 0.0283168, 'ft3_s': 0.0283168,
+        
+        # Thermal Properties (additional)
+        'calorie_per_gram_celsius': 4184.0, 'cal_g_C': 4184.0,
+        'btu_per_pound_fahrenheit': 4186.8, 'BTU_lb_F': 4186.8,
+        
+        # Surface Tension
+        'newton_per_meter': 1.0, 'N_m': 1.0,
+        'dyne_per_centimeter': 0.001, 'dyn_cm': 0.001,
+        
+        # Moment of Inertia
+        'kilogram_meter_squared': 1.0, 'kg_m2': 1.0,
+        'gram_centimeter_squared': 1e-7, 'g_cm2': 1e-7,
+        
+        # Angular Velocity
+        'radian_per_second': 1.0, 'rad_s': 1.0,
+        'degree_per_second': 0.0174533, 'deg_s': 0.0174533,
+        'revolution_per_minute': 0.104720, 'rev_min': 0.104720,
+        'revolution_per_second': 6.28319, 'rev_s': 6.28319,
     }
     
     # Map units to their base unit (auto-generated from conversions)
@@ -640,6 +704,40 @@ class Unit:
                               'nanomolar', 'nM']
         for u in concentration_units:
             mapping[u] = 'molar'
+        
+        # Torque units (dimensionally same as energy but contextually different)
+        torque_units = ['newton_meter', 'Nm', 'N_m', 'kilonewton_meter', 'kNm',
+                       'inch_pound', 'in_lb', 'inch_lb', 'foot_pound', 'ft_lb', 
+                       'foot_lb', 'pound_foot', 'lb_ft']
+        for u in torque_units:
+            mapping[u] = 'newton_meter'
+        
+        # Paper/fabric weight (mass per area)
+        mapping['gsm'] = 'kilogram'  # Will be handled as kg/m²
+        mapping['grams_per_square_meter'] = 'kilogram'
+        
+        # Mass flow rate
+        mass_flow_units = ['kilogram_per_second', 'kg_s', 'kilogram_per_minute', 'kg_min',
+                          'kilogram_per_hour', 'kg_hr', 'kg_h', 'ton_per_hour', 'tph', 't_h',
+                          'pound_per_second', 'lb_s', 'pound_per_minute', 'lb_min',
+                          'pound_per_hour', 'lb_hr']
+        for u in mass_flow_units:
+            mapping[u] = 'kilogram_per_second'
+        
+        # Volumetric flow rate (additional)
+        vol_flow_units = ['cubic_meter_per_minute', 'm3_min', 'cubic_meter_per_hour', 
+                         'm3_hr', 'm3_h', 'cubic_foot_per_minute', 'cfm', 'ft3_min',
+                         'cubic_foot_per_second', 'cfs', 'ft3_s',
+                         'liter_per_second', 'L_s', 'liter_per_minute', 'L_min', 'lpm',
+                         'liter_per_hour', 'L_hr', 'L_h', 'lph', 'gallon_per_minute', 'gpm']
+        for u in vol_flow_units:
+            mapping[u] = 'cubic_meter_per_second'
+        
+        # Angular velocity
+        angular_vel_units = ['radian_per_second', 'rad_s', 'degree_per_second', 'deg_s',
+                            'revolution_per_minute', 'rev_min', 'revolution_per_second', 'rev_s']
+        for u in angular_vel_units:
+            mapping[u] = 'radian_per_second'
         
         cls._UNIT_TO_BASE = mapping
         return mapping

@@ -12,6 +12,7 @@ from unifyt.dimensions import Dimension
 from unifyt.context import UnitContext
 from unifyt import constants
 from unifyt import utils
+from unifyt import wire_gauge
 
 # Import serialization if available
 try:
@@ -91,6 +92,7 @@ __all__ = [
     # Modules
     "constants",
     "utils",
+    "wire_gauge",
     
     # Exceptions - Base
     "UnifytException",

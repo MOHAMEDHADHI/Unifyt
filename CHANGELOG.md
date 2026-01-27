@@ -7,6 +7,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - New Units and Features 🚀
+
+#### Wire Gauge Support
+- **AWG (American Wire Gauge)**: Complete conversion table for gauges 0000, 000, 00, 0-44
+- **SWG (Standard Wire Gauge)**: Complete conversion table for gauges 0-50
+- **BWG (Birmingham Wire Gauge)**: Complete conversion table for gauges 0-36
+- New `wire_gauge` module with bidirectional conversions (gauge ↔ diameter)
+- Support for diameter in any length unit (mm, inch, etc.)
+
+#### Torque Units
+- `newton_meter`, `Nm`, `N_m` - SI torque unit
+- `kilonewton_meter`, `kNm` - Large torque applications
+- `foot_pound`, `ft_lb`, `foot_lb`, `pound_foot`, `lb_ft` - Imperial torque
+- `inch_pound`, `in_lb`, `inch_lb` - Small fastener torque
+
+#### Industrial Flow Units
+- **Mass Flow**: `kilogram_per_second`, `kilogram_per_minute`, `kilogram_per_hour`, `ton_per_hour` (tph)
+- **Volumetric Flow**: `cubic_meter_per_minute`, `cubic_meter_per_hour`, `cubic_foot_per_minute` (cfm), `cubic_foot_per_second` (cfs)
+- Imperial mass flow: `pound_per_second`, `pound_per_minute`, `pound_per_hour`
+
+#### Angular Velocity Units
+- `radian_per_second`, `rad_s` - SI angular velocity
+- `degree_per_second`, `deg_s` - Degrees per second
+- `revolution_per_minute`, `rev_min` - Alternative to rpm
+- `revolution_per_second`, `rev_s` - Revolutions per second
+
+#### Paper/Fabric Weight
+- `gsm`, `grams_per_square_meter` - Standard paper weight unit
+
+#### Additional Specialized Units
+- **Specific Energy**: `joule_per_kilogram`, `kilojoule_per_kilogram`, `megajoule_per_kilogram`, `calorie_per_gram`
+- **Specific Volume**: `cubic_meter_per_kilogram`, `liter_per_kilogram`
+- **Thermal Properties**: `calorie_per_gram_celsius`, `btu_per_pound_fahrenheit`
+- **Surface Tension**: `newton_per_meter`, `dyne_per_centimeter`
+- **Moment of Inertia**: `kilogram_meter_squared`, `gram_centimeter_squared`
+
+### Changed
+- Updated `_BASE_UNITS` dictionary to include new derived unit dimensions
+- Enhanced unit mapping system to support new unit categories
+- Improved documentation with wire gauge examples
+
+### Documentation
+- Added `wire_gauge.py` module with comprehensive docstrings
+- Created `examples/new_units_demo.py` showcasing all new units
+- Added `tests/test_wire_gauge.py` with full test coverage
+- Updated README.md with wire gauge and new unit examples
+- Enhanced unit catalog documentation
+
 ## [0.2.0] - 2024-12-24
 
 ### Added - Major Feature Release 🚀

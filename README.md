@@ -28,6 +28,9 @@ print(speed.to('kilometer/hour'))  # 36.0 km/h 🎯
 
 - **Intuitive API**: Simple and Pythonic interface for working with physical quantities
 - **Extensive Unit Support**: **300+ units** including SI, imperial, astronomical, atomic, electromagnetic, and more
+- **Wire Gauge Support**: AWG, SWG, BWG conversions for electrical and mechanical applications
+- **Torque Units**: Convenient shortcuts for newton-meter, foot-pound, inch-pound
+- **Industrial Units**: GSM, mass flow rates, volumetric flow rates, angular velocity
 - **High Performance**: Optimized for speed with caching and NumPy integration
 - **Type Safety**: Full type hints for better IDE support
 - **Flexible Conversions**: Easy unit conversions with automatic dimensionality checking
@@ -44,6 +47,9 @@ print(speed.to('kilometer/hour'))  # 36.0 km/h 🎯
 - **80+ constants** (2.7x increase!)
 - **25+ exception types** for precise error handling
 - **15+ new categories**: Electromagnetic, radioactivity, data storage, viscosity, and more
+- **Wire gauge support**: AWG, SWG, BWG conversions
+- **Torque units**: Newton-meter, foot-pound, inch-pound shortcuts
+- **Industrial units**: GSM, mass flow rates, volumetric flow rates, angular velocity
 - **Comprehensive documentation**: 10+ new guides including WHY_UNIFYT.md, EXCEPTIONS_GUIDE.md
 - **Fully backward compatible** - All existing code works
 - See [CHANGELOG.md](CHANGELOG.md) for complete details
@@ -73,7 +79,7 @@ pip install unifyt
 ```
 
 ```python
-from unifyt import Quantity, constants, utils
+from unifyt import Quantity, constants, utils, wire_gauge
 import numpy as np
 
 # Create quantities with units
@@ -96,6 +102,15 @@ print(distances.to('kilometers'))  # [0.1 0.2 0.3] kilometer
 mass = Quantity(1, 'kilogram')
 energy = mass * constants.c ** 2  # E = mc²
 print(energy.to('kilowatt_hour'))
+
+# Wire gauge conversions
+wire_diameter = wire_gauge.awg_to_diameter(14)  # AWG 14 wire
+print(wire_diameter)  # 1.628 millimeter
+print(wire_diameter.to('inch'))  # 0.0641 inch
+
+# Torque calculations
+torque = Quantity(100, 'newton_meter')  # or 'Nm'
+print(torque.to('foot_pound'))  # 73.76 ft-lb
 
 # Utility functions
 temps = utils.linspace(Quantity(0, 'celsius'), Quantity(100, 'celsius'), 11)
@@ -203,6 +218,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **Power**: watt, kilowatt, horsepower, gigawatt, terawatt, etc.
 - **Pressure**: pascal, bar, atmosphere, psi, torr, gigapascal, etc.
 - **Force**: newton, dyne, kilogram_force, pound_force, kip, etc.
+- **Torque**: newton_meter (Nm), foot_pound (ft-lb), inch_pound (in-lb), etc.
 - **Frequency**: hertz, kilohertz, megahertz, gigahertz, terahertz, rpm, etc.
 - **Voltage**: volt, millivolt, kilovolt, megavolt, etc.
 - **Current**: ampere, milliampere, microampere, kiloampere, etc.
@@ -216,7 +232,26 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **Angle**: radian, degree, arcminute, arcsecond, etc.
 - **Viscosity**: poise, stokes, pascal_second, etc.
 - **Concentration**: molar, millimolar, micromolar, etc.
+- **Flow Rates**: liter_per_minute, cubic_foot_per_minute (cfm), kilogram_per_hour, ton_per_hour, etc.
+- **Angular Velocity**: rpm, radian_per_second, degree_per_second, revolution_per_minute, etc.
+- **Paper/Fabric Weight**: gsm (grams per square meter)
 - And many more!
+
+### Wire Gauges
+- **AWG** (American Wire Gauge): 0000, 000, 00, 0-44
+- **SWG** (Standard Wire Gauge): 0-50
+- **BWG** (Birmingham Wire Gauge): 0-36
+
+```python
+from unifyt import wire_gauge
+
+# Convert gauge to diameter
+diameter = wire_gauge.awg_to_diameter(14)  # 1.628 mm
+diameter_in = wire_gauge.awg_to_diameter(14, 'inch')  # 0.0641 in
+
+# Find gauge from diameter
+gauge = wire_gauge.diameter_to_awg(Quantity(1.6, 'mm'))  # 14
+```
 
 ## Physical Constants (80+)
 
