@@ -313,3 +313,4 @@ This library is inspired by and builds upon the excellent work of:
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
+
