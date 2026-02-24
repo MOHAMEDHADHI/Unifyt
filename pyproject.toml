@@ -1,32 +1,19 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.black]
-line-length = 100
-target-version = ['py38', 'py39', 'py310', 'py311']
-include = '\.pyi?$'
-
-[tool.isort]
-profile = "black"
-line_length = 100
-
-[tool.mypy]
-python_version = "3.8"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = "-v --tb=short --strict-markers -p no:langsmith"
-# Uncomment for coverage:
-# addopts = "-v --cov=unifyt --cov-report=html --cov-report=term -p no:langsmith"
-filterwarnings = [
-    "ignore::DeprecationWarning",
-    "ignore::PendingDeprecationWarning",
+[project]
+name = "Unifyt"
+version = "0.2.1"
+description = "A powerful and easy-to-use Python library for unit conversion and calculations."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Mohamed Hadhi"}
 ]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/MOHAMEDHADHI/Unifyt"
