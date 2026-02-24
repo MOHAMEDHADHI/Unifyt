@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="unifyt",
-    version="0.2.3",
+    version="0.2.4",
     author="Your Name",
     author_email="your.email@example.com",
     description="A powerful library for unit conversion and calculations",
