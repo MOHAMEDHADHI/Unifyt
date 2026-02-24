@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Unifyt"
-version = "0.2.2"
+version = "0.2.4"
 description = "A powerful and easy-to-use Python library for unit conversion and calculations."
 readme = "README.md"
 requires-python = ">=3.8"
