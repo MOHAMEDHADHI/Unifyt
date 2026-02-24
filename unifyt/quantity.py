@@ -18,16 +18,46 @@ class Quantity:
         >>> print(speed.to('km/h'))
     """
     
-    def __init__(self, value: Union[float, int, np.ndarray], unit: Union[str, Unit]):
+    def __init__(self, value: Union[float, int, np.ndarray, str], unit: Union[str, Unit, None] = None):
         """
         Initialize a Quantity.
         
         Args:
-            value: Numerical value (scalar or array)
-            unit: Unit as string or Unit object
+            value: Numerical value (scalar or array) or string like '5 minute'
+            unit: Unit as string or Unit object. If provided when value is a string,
+                  the quantity will be converted to this unit.
+        
+        Examples:
+            >>> Quantity(5, 'minute')  # Traditional way
+            >>> Quantity('5 minute')  # Parse from string
+            >>> Quantity('5 minute', 'second')  # Parse and convert
         """
-        self._value = np.asarray(value)
-        self._unit = Unit(unit) if isinstance(unit, str) else unit
+        # Handle string input like '5 minute'
+        if isinstance(value, str):
+            parts = value.strip().split(None, 1)
+            if len(parts) != 2:
+                raise ValueError(f"Invalid quantity string: '{value}'. Expected format: '5 minute'")
+            try:
+                numeric_value = float(parts[0])
+            except ValueError:
+                raise ValueError(f"Invalid numeric value in '{value}'")
+            source_unit = parts[1]
+            
+            # Create the quantity with source unit
+            self._value = np.asarray(numeric_value)
+            self._unit = Unit(source_unit)
+            
+            # If target unit provided, convert to it
+            if unit is not None:
+                converted = self.to(unit)
+                self._value = converted._value
+                self._unit = converted._unit
+        else:
+            # Traditional initialization
+            if unit is None:
+                raise ValueError("Unit must be provided when value is numeric")
+            self._value = np.asarray(value)
+            self._unit = Unit(unit) if isinstance(unit, str) else unit
     
     @property
     def value(self) -> np.ndarray:
