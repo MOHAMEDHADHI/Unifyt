@@ -78,7 +78,7 @@ from unifyt.exceptions import (
     create_exception,
 )
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 # Build __all__ dynamically based on what's available
 __all__ = [
