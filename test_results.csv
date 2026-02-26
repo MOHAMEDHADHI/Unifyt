@@ -1,0 +1,89 @@
+Category,Test ID,Input Value,Input Unit,Target Unit,Expected Output,Actual Output,Status,Notes
+Time,T001,10,second,minute,0.1667,0.166667,PASS,Standard conversion
+Time,T002,10,sec,min,0.1667,0.166667,PASS,Abbreviated form
+Time,T003,60,s,min,1.0,1.000000,PASS,Short form second to minute
+Time,T004,5,minute,second,300.0,300.000000,PASS,Minute to second
+Time,T005,5,min,s,300.0,300.000000,PASS,Abbreviated minute to second
+Time,T006,1,hour,minute,60.0,60.000000,PASS,Hour to minute
+Time,T007,1,hr,min,60.0,60.000000,PASS,Abbreviated hour to minute
+Time,T008,1,h,s,3600.0,3600.000000,PASS,Hour to second (short form)
+Time,T009,1,day,hour,24.0,24.000000,PASS,Day to hour
+Time,T010,1,d,hr,24.0,24.000000,PASS,Abbreviated day to hour
+Length,L001,5,centimeter,meter,0.05,0.050000,PASS,Standard conversion
+Length,L002,5,cm,m,0.05,0.050000,PASS,Abbreviated form
+Length,L003,100,meter,kilometer,0.1,0.100000,PASS,Meter to kilometer
+Length,L004,100,m,km,0.1,0.100000,PASS,Abbreviated meter to kilometer
+Length,L005,1,kilometer,meter,1000.0,1000.000000,PASS,Kilometer to meter
+Length,L006,1,km,m,1000.0,1000.000000,PASS,Abbreviated kilometer to meter
+Length,L007,12,inch,centimeter,30.48,30.480000,PASS,Inch to centimeter
+Length,L008,12,in,cm,30.48,30.480000,PASS,Abbreviated inch to centimeter
+Length,L009,3,foot,meter,0.9144,0.914400,PASS,Foot to meter
+Length,L010,3,ft,m,0.9144,0.914400,PASS,Abbreviated foot to meter
+Length,L011,1,mile,kilometer,1.609344,1.609344,PASS,Mile to kilometer
+Length,L012,1,mi,km,1.609344,1.609344,PASS,Abbreviated mile to kilometer
+Mass,M001,100,pound,kilogram,45.3592,45.359200,PASS,Standard conversion
+Mass,M002,100,lb,kg,45.3592,45.359200,PASS,Abbreviated form
+Mass,M003,1,kilogram,gram,1000.0,1000.000000,PASS,Kilogram to gram
+Mass,M004,1,kg,g,1000.0,1000.000000,PASS,Abbreviated kilogram to gram
+Mass,M005,1000,gram,kilogram,1.0,1.000000,PASS,Gram to kilogram
+Mass,M006,1000,g,kg,1.0,1.000000,PASS,Abbreviated gram to kilogram
+Mass,M007,16,ounce,pound,1.0,1.000000,PASS,Ounce to pound
+Mass,M008,16,oz,lb,1.0,1.000000,PASS,Abbreviated ounce to pound
+Mass,M009,1,ton,kilogram,1000.0,1000.000000,PASS,Ton to kilogram
+Pressure,P001,1,bar,pascal,100000.0,100000.000000,PASS,Standard conversion
+Pressure,P002,1,bar,Pa,100000.0,100000.000000,PASS,Abbreviated form
+Pressure,P003,100,psi,bar,6.89476,6.894760,PASS,PSI to bar
+Pressure,P004,100,PSI,bar,6.89476,6.894760,PASS,Uppercase PSI to bar
+Pressure,P005,1,atmosphere,pascal,101325.0,101325.000000,PASS,Atmosphere to pascal
+Pressure,P006,1,atm,Pa,101325.0,101325.000000,PASS,Abbreviated atmosphere to pascal
+Pressure,P007,760,torr,atm,1.0,0.999997,PASS,Torr to atmosphere
+Pressure,P008,1,kilopascal,pascal,1000.0,1000.000000,PASS,Kilopascal to pascal
+Pressure,P009,1,kPa,Pa,1000.0,1000.000000,PASS,Abbreviated kilopascal to pascal
+Temperature,TEMP001,0,celsius,fahrenheit,32.0,32.000000,PASS,Celsius to Fahrenheit
+Temperature,TEMP002,100,celsius,kelvin,373.15,373.150000,PASS,Celsius to Kelvin
+Temperature,TEMP003,32,fahrenheit,celsius,0.0,0.000000,PASS,Fahrenheit to Celsius
+Temperature,TEMP004,273.15,kelvin,celsius,0.0,0.000000,PASS,Kelvin to Celsius
+Temperature,TEMP005,212,fahrenheit,kelvin,373.15,373.150000,PASS,Fahrenheit to Kelvin
+Energy,E001,1,kilowatt_hour,joule,3600000.0,3600000.000000,PASS,Standard conversion
+Energy,E002,1,kWh,J,3600000.0,3600000.000000,PASS,Abbreviated form
+Energy,E003,1000,joule,kilojoule,1.0,1.000000,PASS,Joule to kilojoule
+Energy,E004,1000,J,kJ,1.0,1.000000,PASS,Abbreviated joule to kilojoule
+Energy,E005,1,calorie,joule,4.184,4.184000,PASS,Calorie to joule
+Energy,E006,1,cal,J,4.184,4.184000,PASS,Abbreviated calorie to joule
+Energy,E007,1,BTU,joule,1055.06,1055.060000,PASS,BTU to joule
+Power,POW001,1,kilowatt,watt,1000.0,1000.000000,PASS,Standard conversion
+Power,POW002,1,kW,W,1000.0,1000.000000,PASS,Abbreviated form
+Power,POW003,1,horsepower,watt,745.7,745.700000,PASS,Horsepower to watt
+Power,POW004,1,hp,W,745.7,745.700000,PASS,Abbreviated horsepower to watt
+Power,POW005,1000,watt,kilowatt,1.0,1.000000,PASS,Watt to kilowatt
+Power,POW006,1000,W,kW,1.0,1.000000,PASS,Abbreviated watt to kilowatt
+Speed,S001,100,kilometer/hour,meter/second,27.7778,27.777778,PASS,Standard conversion
+Speed,S002,100,km/hr,m/s,27.7778,27.777778,PASS,Abbreviated form
+Speed,S003,60,mile/hour,kilometer/hour,96.5606,96.560640,PASS,Mile per hour to km per hour
+Speed,S004,60,mi/hr,km/hr,96.5606,96.560640,PASS,Abbreviated mile per hour
+Speed,S005,10,meter/second,kilometer/hour,36.0,36.000000,PASS,Meter per second to km per hour
+Speed,S006,10,m/s,km/hr,36.0,36.000000,PASS,Abbreviated meter per second
+Flow_Rate,F001,100,cubic_foot_per_minute,cubic_meter_per_minute,2.8317,2.831682,PASS,CFM to m3/min
+Flow_Rate,F002,100,cfm,m3_min,2.8317,2.831682,PASS,Abbreviated CFM
+Flow_Rate,F003,50,liter_per_minute,gallon_per_minute,13.2086,13.208602,PASS,Liters per minute to GPM
+Flow_Rate,F004,50,L_min,gpm,13.2086,13.208602,PASS,Abbreviated liters per minute
+Torque,TQ001,100,newton_meter,foot_pound,73.7562,73.756215,PASS,Newton-meter to foot-pound
+Torque,TQ002,100,Nm,ft_lb,73.7562,73.756215,PASS,Abbreviated newton-meter
+Torque,TQ003,50,foot_pound,newton_meter,67.7958,67.790897,PASS,Foot-pound to newton-meter
+Torque,TQ004,50,ft_lb,Nm,67.7958,67.790897,PASS,Abbreviated foot-pound
+Angular_Velocity,AV001,60,revolution_per_minute,radian_per_second,6.2832,6.283200,PASS,RPM to rad/s
+Angular_Velocity,AV002,60,rpm,rad_s,6.2832,1.000000,MISMATCH,"Abbreviated RPM | Expected: 6.2832, Got: 1.0"
+Angular_Velocity,AV003,1,radian_per_second,degree_per_second,57.2958,57.295755,PASS,Rad/s to deg/s
+Angular_Velocity,AV004,1,rad_s,deg_s,57.2958,57.295755,PASS,Abbreviated rad/s
+Voltage,V001,1,kilovolt,volt,1000.0,1000.000000,PASS,Kilovolt to volt
+Voltage,V002,1,kV,V,1000.0,1000.000000,PASS,Abbreviated kilovolt
+Voltage,V003,230,volt,kilovolt,0.23,0.230000,PASS,Volt to kilovolt
+Voltage,V004,230,V,kV,0.23,0.230000,PASS,Abbreviated volt
+Force,FOR001,1000,newton,kilonewton,1.0,1.000000,PASS,Newton to kilonewton
+Force,FOR002,1000,N,kN,1.0,1.000000,PASS,Abbreviated newton
+Force,FOR003,100,pound_force,newton,444.822,444.822000,PASS,Pound-force to newton
+Force,FOR004,100,lbf,N,444.822,444.822000,PASS,Abbreviated pound-force
+Volume,VOL001,1,liter,cubic_meter,0.001,0.001000,PASS,Liter to cubic meter
+Volume,VOL002,1,L,m3,0.001,0.001000,PASS,Abbreviated liter
+Volume,VOL003,1,gallon,liter,3.78541,3.785410,PASS,Gallon to liter
+Volume,VOL004,1,gal,L,3.78541,10.000000,MISMATCH,"Abbreviated gallon | Expected: 3.78541, Got: 10.0"
